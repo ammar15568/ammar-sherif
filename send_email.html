@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    $to = "ammarana452@gmail.com"; // استبدل بـ بريدك الإلكتروني
+    $subject = "رسالة جديدة من نموذج الاتصال";
+    $body = "الاسم: $name\nالبريد الإلكتروني: $email\n\nالرسالة:\n$message";
+    $headers = "From: $email";
+
+    if (mail($to, $subject, $body, $headers)) {
+    echo "تم إرسال رسالتك بنجاح.";
+    } else {
+    echo "حدث خطأ أثناء إرسال رسالتك. حاول مرة أخرى.";
+    }
+    }
+    ?>
+
+
+</body>
+</html>
